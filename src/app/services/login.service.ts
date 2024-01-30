@@ -13,7 +13,7 @@ export class LoginService {
     public endpoints: Endpoints
   ) { }
 
-  login(formData: any){
+  login(formData: any) {
     // const body = {
     //   email: "test@test.com",
     //   password: "test"
@@ -21,4 +21,14 @@ export class LoginService {
     console.log(`${environment.API_URL}${this.endpoints.urlLogin}`);
     return this.http.post<Login>(`${environment.API_URL}${this.endpoints.urlLogin}`, formData);
   }
+
+  signup(formData: any) {
+    // const body = {
+    //   email: "test@test.com",
+    //   password: "test"
+    // }
+    console.log(`${environment.API_URL}${this.endpoints.urlLogin}`);
+    return this.http.post<any>(`${environment.API_URL}${this.endpoints.urlLogin}`, formData);
+  }
+
 }

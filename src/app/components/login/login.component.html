@@ -1,27 +1,24 @@
-<!-- <button (click)="login()">enviar</button> -->
 
 <div class="login-container">
   <form [formGroup]="form" (ngSubmit)="login()">
       <h2>Login</h2>
 
       <label for="email" >Correo electrónico:</label>
-      <!-- <input formControlName="email" type="email" id="email" name="email">
-      <mat-error *ngIf="form.get('email')?.errors?.['required']">
-        Campo obligatorio
-      </mat-error> -->
-      <!-- <mat-form-field>
-        <mat-label>Input</mat-label>
-        <input matInput formControlName="email">
-      </mat-form-field> -->
-      <mat-form-field>
+      <mat-form-field class="input">
         <input matInput formControlName="email" type="email" id="email" name="email">
         <mat-error *ngIf="form.get('email')?.errors?.['required']">
           Campo obligatorio
         </mat-error>
       </mat-form-field>
-      <label for="password">Contraseña:</label>
-      <input formControlName="password" type="password" id="password" name="password">
 
+      <label for="password">Contraseña:</label>
+      <mat-form-field class="input">
+        <input matInput formControlName="password" type="password" id="password" name="password">
+        <mat-error *ngIf="form.get('email')?.errors?.['required']">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+      
       <button type="submit">Iniciar sesión</button>
 
       <div class="redirect-link">

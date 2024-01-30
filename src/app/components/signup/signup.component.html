@@ -1,0 +1,45 @@
+
+<div class="signup-container">
+    <form [formGroup]="form" (ngSubmit)="signup()">
+        <h2>Login</h2>
+  
+        <label for="fullName" >Nombre:</label>
+        <mat-form-field class="input">
+          <input matInput formControlName="fullName" type="fullName" id="fullName" name="fullName">
+          <mat-error *ngIf="form.get('fullName')?.errors?.['required']">
+            Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+  
+        <label for="age">Edad:</label>
+        <mat-form-field class="input">
+          <input matInput formControlName="age" type="age" id="age" name="age">
+          <mat-error *ngIf="form.get('age')?.errors?.['required']">
+            Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <label for="email">Email:</label>
+        <mat-form-field class="input">
+          <input matInput formControlName="email" type="email" id="email" name="email">
+          <mat-error *ngIf="form.get('email')?.errors?.['required']">
+            Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <label for="password">Contraseña:</label>
+        <mat-form-field class="input">
+          <input matInput formControlName="password" type="password" id="password" name="password">
+          <mat-error *ngIf="form.get('password')?.errors?.['required']">
+            Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+        
+        <button type="submit">Registrarme</button>
+  
+        <div class="redirect-link">
+            Ya tengo una cuenta <a href="/login">Iniciar Sesión</a>
+        </div>
+    </form>
+  </div>
+  
