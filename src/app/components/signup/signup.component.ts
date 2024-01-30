@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,8 @@ export class SignupComponent {
   constructor(
     public loginService: LoginService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
   form!: FormGroup;
 
@@ -28,10 +30,13 @@ export class SignupComponent {
   signup() {
     if (this.form?.valid) {
       this.loginService.signup(this.form.value).subscribe((data: any) => {
-        if (data?.token) {
-          localStorage.setItem('_token', data.token);
-          this.router.navigate(['home'])
-        }
+        this.snackBar.open('Usuario creado exitosamente', 'Cerrar', {
+          duration: 3000,
+        });
+        
+        setTimeout(() => {
+          this.router.navigate(['login']);
+        }, 3000);
       })
     }
   }

@@ -14,21 +14,13 @@ export class LoginService {
   ) { }
 
   login(formData: any) {
-    // const body = {
-    //   email: "test@test.com",
-    //   password: "test"
-    // }
     console.log(`${environment.API_URL}${this.endpoints.urlLogin}`);
     return this.http.post<Login>(`${environment.API_URL}${this.endpoints.urlLogin}`, formData);
   }
 
   signup(formData: any) {
-    // const body = {
-    //   email: "test@test.com",
-    //   password: "test"
-    // }
-    console.log(`${environment.API_URL}${this.endpoints.urlLogin}`);
-    return this.http.post<any>(`${environment.API_URL}${this.endpoints.urlLogin}`, formData);
+    console.log(`${environment.API_URL}${this.endpoints.urlSignup}`);
+    return this.http.post<any>(`${environment.API_URL}${this.endpoints.urlSignup}`, formData);
   }
 
 }
