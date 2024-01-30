@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -33,7 +33,7 @@ export class SignupComponent {
         this.snackBar.open('Usuario creado exitosamente', 'Cerrar', {
           duration: 3000,
         });
-        
+
         setTimeout(() => {
           this.router.navigate(['login']);
         }, 3000);

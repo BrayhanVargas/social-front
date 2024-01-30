@@ -7,7 +7,6 @@ import { Login } from '../interfaces/login';
   providedIn: 'root'
 })
 export class LoginService {
-  url: string = 'http://localhost:3000';
   constructor(
     private http: HttpClient,
     public endpoints: Endpoints
