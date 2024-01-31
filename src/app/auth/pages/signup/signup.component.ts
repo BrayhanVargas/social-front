@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SignupComponent {
   constructor(
-    public loginService: LoginService,
+    public userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar
@@ -29,7 +29,7 @@ export class SignupComponent {
 
   signup() {
     if (this.form?.valid) {
-      this.loginService.signup(this.form.value).subscribe((data: any) => {
+      this.userService.signup(this.form.value).subscribe((data: any) => {
         this.snackBar.open('Usuario creado exitosamente', 'Cerrar', {
           duration: 3000,
         });

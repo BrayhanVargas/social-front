@@ -1,35 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { ProfileComponent } from './components/profile/profile.component';
 
+// dominio.com/
 const routes: Routes = [
-
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ),
+  },
+  {
+    path: 'social',
+    loadChildren: () => import('./social/social.module').then( m => m.SocialModule ),
+  },
+  // {
+  //   path: '404',
+  //   component: Error404PageComponent,
+  // },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'signup',
-    component: SignupComponent
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent
-  },
-  {
-    path:'**', redirectTo: 'login'
+    path: '**',
+    redirectTo: 'auth',
   }
 ];
 
