@@ -13,7 +13,7 @@ export class PostsService {
     public endpoints: Endpoints
   ) { }
 
-  getPosts(userId: number){
+  getPostsById(userId: number){
     const authToken = localStorage.getItem('_token');
     const url = `${environment.API_URL}${this.endpoints.urlPosts}`;
     const params = new HttpParams().set('userId', userId.toString());

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class ProfileComponent {
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
-    this.postsService.getPosts(1)
+    this.postsService.getPostsById(1)
       .subscribe(data => {
         const { posts } = data
         this.posts = posts
