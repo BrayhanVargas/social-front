@@ -29,7 +29,7 @@
   }
   
   button {
-    background-color: #4caf50;
+    background-color: rgb(150, 150, 190);
     color: #fff;
     padding: 10px;
     border: none;
@@ -38,7 +38,7 @@
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: rgb(143, 143, 215);
   }
   
   .redirect-link {
