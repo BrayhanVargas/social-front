@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Endpoints } from 'src/resources/endpoints';
+import { PostsResponse } from '../interfaces/posts';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,8 @@ export class PostsService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`
     });
-    console.log("getPosts", url)
 
-    return this.http.get<any>(url, { params, headers });
+    return this.http.get<PostsResponse>(url, { params, headers });
   }
 
   getAllPosts(){
@@ -34,8 +34,6 @@ export class PostsService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    console.log("getAllPosts", url)
-
-    return this.http.get<any>(url, { headers });
+    return this.http.get<PostsResponse>(url, { headers });
   }
 }

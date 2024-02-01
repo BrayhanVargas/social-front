@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post, PostsResponse } from 'src/app/interfaces/posts';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -8,16 +9,15 @@ import { PostsService } from 'src/app/services/posts.service';
 
 })
 export class ProfileComponent {
-  public posts: any[] = [];
+  public posts: Post[] = [];
 
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
     this.postsService.getPostsById(1)
-      .subscribe(data => {
+      .subscribe((data: PostsResponse) => {
         const { posts } = data
         this.posts = posts
-        console.log("profile", posts)
       });
   }
 }

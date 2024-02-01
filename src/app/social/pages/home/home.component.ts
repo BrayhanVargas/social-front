@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post, PostsResponse } from 'src/app/interfaces/posts';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -8,18 +9,17 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class HomeComponent {
 
-  public posts: any[] = [];
+  public posts: Post[] = [];
 
   constructor(
     public postsService: PostsService,
   ) { }
 
   ngOnInit() {
-    this.postsService.getAllPosts().subscribe((data: any) => {
-      console.log(data)
-      const { posts } = data
-      this.posts = posts
-      console.log("home", posts)
-    })
+    this.postsService.getAllPosts()
+      .subscribe((data: PostsResponse) => {
+        const { posts } = data
+        this.posts = posts
+      })
   }
 }
