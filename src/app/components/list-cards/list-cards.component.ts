@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-list-cards',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-cards.component.css']
 })
 export class ListCardsComponent {
-
+  @Input() posts!: any[];
 }

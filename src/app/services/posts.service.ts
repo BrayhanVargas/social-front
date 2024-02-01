@@ -21,7 +21,21 @@ export class PostsService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`
     });
+    console.log("getPosts", url)
 
     return this.http.get<any>(url, { params, headers });
+  }
+
+  getAllPosts(){
+    const authToken = localStorage.getItem('_token');
+    const url = `${environment.API_URL}${this.endpoints.urlAllPosts}`;
+     const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    console.log("getAllPosts", url)
+
+    return this.http.get<any>(url, { headers });
   }
 }

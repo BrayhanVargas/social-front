@@ -10,6 +10,7 @@
 }
 
 button {
- background-color: rgb(150, 150, 190);
-  float: left;
+    background-color: rgb(150, 150, 190);
+    float: left;
+    color: white;
 }

@@ -1,1 +1,3 @@
-<app-card></app-card>
+<div *ngFor="let post of posts" class="col-12 sm:col-4 md:col-3 xl:col-2">
+    <app-card [post]="post"></app-card>
+</div>

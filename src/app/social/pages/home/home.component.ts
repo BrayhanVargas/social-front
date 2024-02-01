@@ -8,13 +8,18 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class HomeComponent {
 
+  public posts: any[] = [];
+
   constructor(
     public postsService: PostsService,
   ) { }
 
   ngOnInit() {
-    this.postsService.getPosts(1).subscribe((data: any) => {
+    this.postsService.getAllPosts().subscribe((data: any) => {
       console.log(data)
+      const { posts } = data
+      this.posts = posts
+      console.log("home", posts)
     })
   }
 }

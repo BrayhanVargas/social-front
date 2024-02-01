@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Post } from 'src/app/interfaces/posts';
 
 @Component({
   selector: 'app-card',
@@ -6,9 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input() title: string = 'Título predeterminado';
-  @Input() description: string = 'Descripción predeterminada';
-  @Input() creationDate: Date = new Date(); // Fecha actual por defecto
+  @Input() post!: Post;
 
   constructor() { }
+  ngOnInit(): void {
+    if (!this.post) throw Error('Hero property is required');
+  }
 }
