@@ -1,7 +1,21 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
 
-app-home, app-profile {
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-home,
+app-profile {
     width: 100%;
     padding: 20px;
 }
+
+/* app-dialog{
+    display: flex !important;
+    flex-direction: column !important;
+}
+ */

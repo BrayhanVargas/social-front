@@ -24,10 +24,10 @@ export class LoginComponent {
 
   login() {
     if (this.form?.valid) {
-      this.userService.login(this.form.value).subscribe((data: Login) => {
+      this.userService.login(this.form.value).subscribe((data: any) => {
         if (data?.token) {
           localStorage.setItem('_token', data.token);
-          console.log('hola')
+          localStorage.setItem('id', data.id);
           this.router.navigate(['social/home'])
         }
       })

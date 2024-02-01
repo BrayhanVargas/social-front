@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Endpoints } from 'src/resources/endpoints';
-import { PostsResponse } from '../interfaces/posts';
+import { Post } from '../interfaces/posts';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class PostsService {
     public endpoints: Endpoints
   ) { }
 
-  getPostsById(userId: number){
+  getPostsById(userId: string){
     const authToken = localStorage.getItem('_token');
     const url = `${environment.API_URL}${this.endpoints.urlPosts}`;
     const params = new HttpParams().set('userId', userId.toString());
@@ -23,7 +23,7 @@ export class PostsService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.get<PostsResponse>(url, { params, headers });
+    return this.http.get<Post[]>(url, { params, headers });
   }
 
   getAllPosts(){
@@ -34,6 +34,6 @@ export class PostsService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.get<PostsResponse>(url, { headers });
+    return this.http.get<Post[]>(url, { headers });
   }
 }

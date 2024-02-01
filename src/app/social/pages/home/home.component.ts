@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post, PostsResponse } from 'src/app/interfaces/posts';
+import { Post } from 'src/app/interfaces/posts';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -17,9 +17,8 @@ export class HomeComponent {
 
   ngOnInit() {
     this.postsService.getAllPosts()
-      .subscribe((data: PostsResponse) => {
-        const { posts } = data
-        this.posts = posts
+      .subscribe((data: Post[]) => {
+        this.posts = data
       })
   }
 }

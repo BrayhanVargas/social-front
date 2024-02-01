@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Post, PostsResponse } from 'src/app/interfaces/posts';
+import { Post } from 'src/app/interfaces/posts';
 import { PostsService } from 'src/app/services/posts.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -11,13 +13,24 @@ import { PostsService } from 'src/app/services/posts.service';
 export class ProfileComponent {
   public posts: Post[] = [];
 
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.postsService.getPostsById(1)
-      .subscribe((data: PostsResponse) => {
-        const { posts } = data
-        this.posts = posts
-      });
+    const userId = localStorage.getItem('id');
+    console.log(userId)
+    if (userId) {
+      this.postsService.getPostsById(userId)
+        .subscribe((data: Post[]) => {
+          this.posts = data
+        });
+    }
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogComponent, {
+      width: '50%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }

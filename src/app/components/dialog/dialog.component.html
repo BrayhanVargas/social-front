@@ -1,0 +1,24 @@
+  <h1 mat-dialog-title>Nueva publicación</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="createPost()">
+      <h2>Login</h2>
+
+      <label for="title">Titulo:</label>
+      <mat-form-field class="input">
+        <input matInput formControlName="title" type="title" id="title" name="title">
+        <mat-error *ngIf="form.get('title')?.errors?.['required']">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <label for="description">Descripcion:</label>
+      <mat-form-field class="input">
+        <input matInput formControlName="description" type="description" id="description" name="description">
+        <mat-error *ngIf="form.get('description')?.errors?.['required']">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-button type="submit">crear</button>
+    </form>
+  </div>
