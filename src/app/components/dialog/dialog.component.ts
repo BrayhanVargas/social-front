@@ -28,6 +28,7 @@ export class DialogComponent {
       }
       this.postsService.createPost(formData).subscribe((data: any) => {
         console.log('datar', data)
+        this.dialogRef.close();
       })
     }
   }

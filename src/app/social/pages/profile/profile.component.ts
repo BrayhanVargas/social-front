@@ -3,6 +3,8 @@ import { Post } from 'src/app/interfaces/posts';
 import { PostsService } from 'src/app/services/posts.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { Subscription } from 'rxjs';
+import { PostEventService } from 'src/app/services/posts.event.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +14,13 @@ import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 })
 export class ProfileComponent {
   public posts: Post[] = [];
+  private postEventSubscription!: Subscription;
 
-  constructor(private postsService: PostsService, private dialog: MatDialog) { }
+  constructor(private postsService: PostsService, private dialog: MatDialog, private postEventService: PostEventService) {
+    this.postEventSubscription = this.postEventService.postCreated$.subscribe(() => {
+      this.loadPosts();
+    });
+  }
 
   ngOnInit(): void {
     const userId = localStorage.getItem('id');
@@ -25,11 +32,26 @@ export class ProfileComponent {
     }
   }
 
+  ngOnDestroy() {
+    this.postEventSubscription.unsubscribe();
+  }
+
+
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DialogComponent, {
       width: '50%',
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  loadPosts() {
+    const userId = localStorage.getItem('id');
+    if (userId) {
+      this.postsService.getPostsById(userId)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        });
+    }
   }
 }
