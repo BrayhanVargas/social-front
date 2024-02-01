@@ -1,0 +1,28 @@
+h2 {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+.sidebar-container {
+    height: 100vh;
+    width: 200px;
+}
+
+.list-group {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-group li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.list-group li:last-child {
+    border-bottom: none;
+}
+
+.list-group li.active {
+    background-color: #ddd;
+}

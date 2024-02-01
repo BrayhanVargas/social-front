@@ -1,0 +1,15 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+button {
+ background-color: rgb(150, 150, 190);
+  float: left;
+}

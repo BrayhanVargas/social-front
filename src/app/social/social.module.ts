@@ -8,6 +8,9 @@ import { SocialRoutingModule } from './social-routing-module';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { ListCardsComponent } from '../components/list-cards/list-cards.component';
 import { CardComponent } from '../components/card/card.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -16,11 +19,13 @@ import { CardComponent } from '../components/card/card.component';
     LayoutComponent,
     SidebarComponent,
     CardComponent,
-    ListCardsComponent
+    ListCardsComponent,
   ],
   imports: [
     CommonModule,
     SocialRoutingModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class SocialModule { }
