@@ -17,7 +17,6 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     const userId = localStorage.getItem('id');
-    console.log(userId)
     if (userId) {
       this.postsService.getPostsById(userId)
         .subscribe((data: Post[]) => {

@@ -14,11 +14,11 @@ export class PostsService {
     public endpoints: Endpoints
   ) { }
 
-  getPostsById(userId: string){
+  getPostsById(userId: string) {
     const authToken = localStorage.getItem('_token');
     const url = `${environment.API_URL}${this.endpoints.urlPosts}`;
     const params = new HttpParams().set('userId', userId.toString());
-     const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`
     });
@@ -26,14 +26,27 @@ export class PostsService {
     return this.http.get<Post[]>(url, { params, headers });
   }
 
-  getAllPosts(){
+  getAllPosts() {
     const authToken = localStorage.getItem('_token');
     const url = `${environment.API_URL}${this.endpoints.urlAllPosts}`;
-     const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`
     });
 
     return this.http.get<Post[]>(url, { headers });
+  }
+
+  createPost(formData: any) {
+
+    const authToken = localStorage.getItem('_token');
+    const url = `${environment.API_URL}${this.endpoints.urlPosts}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post<Post[]>(url, formData, { headers });
+
   }
 }
